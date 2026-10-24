@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 5 - Student Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="college-mark" aria-hidden="true">SR</div>
+            <div>
+                <p class="college-name">Student Registration</p>
+                <p class="college-subtitle">Web Development Practical 5</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="page-intro">
+            <p class="breadcrumb">Home / Practical 5</p>
+            <h1>Student Registration Form</h1>
+            <p class="intro-text">Enter your details below. Fields marked with <span class="required">*</span> are required.</p>
+        </div>
+
+        <section class="form-panel" aria-labelledby="form-heading">
+            <div class="panel-heading">
+                <h2 id="form-heading">Personal and Academic Details</h2>
+                <p>Please check your information before submitting.</p>
+            </div>
+
+            <form id="registrationForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="fullName">Full name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" autocomplete="name"
+                               placeholder="Enter your full name" required minlength="2" maxlength="60"
+                               aria-describedby="fullNameError">
+                        <small class="field-hint">Use letters and spaces only.</small>
+                        <p class="error-message" id="fullNameError" aria-live="polite"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" autocomplete="email"
+                               placeholder="name@example.com" required aria-describedby="emailError">
+                        <p class="error-message" id="emailError" aria-live="polite"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="mobile">Mobile number <span class="required">*</span></label>
+                        <input type="tel" id="mobile" name="mobile" autocomplete="tel"
+                               inputmode="numeric" placeholder="10-digit mobile number" required
+                               maxlength="10" aria-describedby="mobileError">
+                        <p class="error-message" id="mobileError" aria-live="polite"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="course">Course <span class="required">*</span></label>
+                        <select id="course" name="course" required aria-describedby="courseError">
+                            <option value="">Select your course</option>
+                            <option value="BCA">BCA</option>
+                            <option value="BSc IT">B.Sc. IT</option>
+                            <option value="BTech CSE">B.Tech Computer Science</option>
+                            <option value="BCom">B.Com.</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <p class="error-message" id="courseError" aria-live="polite"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="year">Year of study <span class="required">*</span></label>
+                        <select id="year" name="year" required aria-describedby="yearError">
+                            <option value="">Select year</option>
+                            <option value="1">First year</option>
+                            <option value="2">Second year</option>
+                            <option value="3">Third year</option>
+                            <option value="4">Fourth year</option>
+                        </select>
+                        <p class="error-message" id="yearError" aria-live="polite"></p>
+                    </div>
+
+                    <fieldset class="form-field gender-field">
+                        <legend>Gender <span class="required">*</span></legend>
+                        <div class="radio-options">
+                            <label><input type="radio" name="gender" value="Female"> Female</label>
+                            <label><input type="radio" name="gender" value="Male"> Male</label>
+                            <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+                        </div>
+                        <p class="error-message" id="genderError" aria-live="polite"></p>
+                    </fieldset>
+
+                    <div class="form-field">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <input type="password" id="password" name="password" autocomplete="new-password"
+                               placeholder="Create a password" required aria-describedby="passwordHint passwordError">
+                        <div class="strength-row">
+                            <span>Password strength</span>
+                            <span id="strengthLabel">Not entered</span>
+                        </div>
+                        <div class="strength-track" aria-hidden="true">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <small class="field-hint" id="passwordHint">Use at least 8 characters with uppercase, lowercase, a number, and a symbol.</small>
+                        <p class="error-message" id="passwordError" aria-live="polite"></p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="confirmPassword">Confirm password <span class="required">*</span></label>
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                               autocomplete="new-password" placeholder="Enter password again" required
+                               aria-describedby="confirmPasswordError">
+                        <p class="error-message" id="confirmPasswordError" aria-live="polite"></p>
+                    </div>
+                </div>
+
+                <div class="terms-field">
+                    <label for="terms">
+                        <input type="checkbox" id="terms" name="terms">
+                        <span>I confirm that the information provided is correct. <span class="required">*</span></span>
+                    </label>
+                    <p class="error-message" id="termsError" aria-live="polite"></p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="button button-primary">Submit registration</button>
+                    <button type="reset" class="button button-secondary" id="resetButton">Clear form</button>
+                </div>
+
+                <div id="formMessage" class="form-message" role="status" aria-live="polite" tabindex="-1"></div>
+            </form>
+        </section>
+
+        <section class="test-note" aria-labelledby="test-heading">
+            <h2 id="test-heading">Validation checklist</h2>
+            <p>This form checks required fields, email format, a 10-digit mobile number, password strength, matching passwords, course and year selection, gender selection, and terms acceptance.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Practical 5: Frontend Validation and Error Handling</p>
+            <p>HTML5 · CSS3 · JavaScript</p>
+        </div>
+    </footer>
+</body>
+</html>
